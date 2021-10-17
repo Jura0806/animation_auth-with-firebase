@@ -20,7 +20,7 @@ class AuthService{
     return null;
   }
 
-  static Future<FirebaseUser> signUpUser(BuildContext contex, String name, String email, String password) async{
+  static Future<FirebaseUser> signUpUser(BuildContext context, String name, String email, String password) async{
     try{
       var authResult = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = authResult.user ;

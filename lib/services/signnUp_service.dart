@@ -22,16 +22,16 @@ class _SignUpwidgetState extends State<SignUpwidget> {
   var _emailController = TextEditingController();
   var _passwordController = TextEditingController();
 
-  doSignUp() {
+  doSignUp(BuildContext context) {
     String name = _fullNameController.text.toString().trim();
     String email = _emailController.text.toString().trim();
     String password = _passwordController.text.toString().trim();
     print("flutter");
-      Navigator.pushReplacementNamed(context, HomePage.id);
-    // if(email.isEmpty || password.isEmpty || name.isEmpty) return;
-    // AuthService.signUpUser(context,name,  email, password).then((firebaseUser) => {
-    //   _getFirebaseUser(firebaseUser)
-    // });
+    //Navigator.pushReplacementNamed(context, HomePage.id);
+    //if(email.isEmpty || password.isEmpty || name.isEmpty) return;
+    AuthService.signUpUser(context,name,  email, password).then((firebaseUser) => {
+       _getFirebaseUser(firebaseUser)
+    });
   }
   _getFirebaseUser( FirebaseUser firebaseUser) async{
     if(firebaseUser != null){
@@ -58,6 +58,7 @@ class _SignUpwidgetState extends State<SignUpwidget> {
               Spacer(),
               SizedBox(height: 20,),
               TextFormField(
+                controller: _fullNameController,
                 decoration: InputDecoration(
                     hintText: "FullName"
                 ),
@@ -67,12 +68,14 @@ class _SignUpwidgetState extends State<SignUpwidget> {
                     vertical: defaultPadding
                 ),
                 child: TextFormField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                       hintText: "Email"
                   ),
                 ),
               ),
               TextFormField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   hintText: "Password",
                   suffixIcon: IconButton(

@@ -115,9 +115,6 @@ class _RegisterPageState extends State<RegisterPage>  with SingleTickerProviderS
                           if(_isShowSignUp){
                             updateView();
                           }else{
-                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-                              return HomePage();
-                            }));
                             //login
                             LoginWidget().createState().doLogIn();
                           }
@@ -151,8 +148,7 @@ class _RegisterPageState extends State<RegisterPage>  with SingleTickerProviderS
                         onTap: (){
                           if(_isShowSignUp){
                             print("hello");
-                            Navigator.pushReplacementNamed(context, HomePage.id);
-                         // SignUpwidget().createState().doSignUp();
+                          SignUpwidget().createState().doSignUp(context);
                           }else{
                             updateView();
                           }

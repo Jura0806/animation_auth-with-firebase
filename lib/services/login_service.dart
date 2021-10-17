@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myplans/pages/home_page.dart';
-import 'package:myplans/pages/home_page.dart';
 import 'package:myplans/services/prefs_service.dart';
 import 'package:myplans/utils/const_utils.dart';
 import 'package:myplans/utils/toast_utils.dart';
@@ -26,7 +25,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     String email = _emailController.text.toString().trim();
     String password = _passwordController.text.toString().trim();
 
-    if(email.isEmpty || password.isEmpty) return;
+   // if(email.isEmpty || password.isEmpty) return;
     AuthService.signInUser(context, email, password).then((firebaseUser) => {
       _getFirebaseUser(firebaseUser)
     });
